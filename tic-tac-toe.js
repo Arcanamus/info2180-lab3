@@ -25,7 +25,15 @@ window.onload = function() {
             }
 
         })
+        element.onmouseover = mouseOn => {
+            element.classList.add("hover");
+        }
+        element.onmouseout = mouseOn => {
+            element.classList.remove("hover");
+        }
     })
+
+
 
 
 }
