@@ -15,73 +15,76 @@ window.onload = function() {
         id++; //ensures each div has a unique ID
         element.addEventListener( "click", clicked =>{
 
-
-            if (x) {
+            if (x && !element.classList.contains("X") && !element.classList.contains("O")) {
+            //prevents boxes already containing a value from being updated
                 element.textContent = "X";
                 element.classList.add("X");
 
                 var num = element.getAttribute("id"); //gets id number for selected div (string)
 
                 // adds the ID of the divs marked for X or O into the xArray elements
+
                 if (parseInt(num) == 0 || parseInt(num) == 1 || parseInt(num) == 2){
                     xArray[0].push(parseInt(num));
-                    xArray[0].sort();
+
                 } if (parseInt(num) == 3 || parseInt(num) == 4 || parseInt(num) == 5) {
                     xArray[1].push(parseInt(num));
-                    xArray[1].sort();
+
                 } if (parseInt(num) == 6 || parseInt(num) == 7 || parseInt(num) == 8) {
                     xArray[2].push(parseInt(num));
-                    xArray[2].sort();
+
                 } if (parseInt(num) == 0 || parseInt(num) == 3 || parseInt(num) == 6) {
                     xArray[3].push(parseInt(num));
-                    xArray[3].sort();
+
                 } if (parseInt(num) == 1 || parseInt(num) == 4 || parseInt(num) == 7) {
                     xArray[4].push(parseInt(num));
-                    xArray[4].sort();
+
                 } if (parseInt(num) == 2 || parseInt(num) == 5 || parseInt(num) == 8) {
                     xArray[5].push(parseInt(num));
-                    xArray[5].sort();
+
                 } if (parseInt(num) == 0 || parseInt(num) == 4 || parseInt(num) == 8) {
                     xArray[6].push(parseInt(num));
-                    xArray[6].sort();
+
                 } if (parseInt(num) == 2 || parseInt(num) == 4 || parseInt(num) == 6) {
                     xArray[7].push(parseInt(num));
-                    xArray[7].sort();
+
                 }
 
                 x = false; //allows O to be the next player
-            } else if (!x) {
+            } else if (!x && !element.classList.contains("X") && !element.classList.contains("O")) {
+            //prevents boxes already containing a value from being updated
+
                 element.textContent = "O";
                 element.classList.add("O");
 
                 var num = element.getAttribute("id"); //gets id number for selected div (string)
 
                 // adds the ID of the divs marked for X or O into the oArray elements
-                //sorted so it can be easily compared to the possible combinations of X and O to win
+
                 if (parseInt(num) == 0 || parseInt(num) == 1 || parseInt(num) == 2){
                     oArray[0].push(parseInt(num));
-                    oArray[0].sort();
+
                 } if (parseInt(num) == 3 || parseInt(num) == 4 || parseInt(num) == 5) {
                     oArray[1].push(parseInt(num));
-                    oArray[1].sort();
+
                 } if (parseInt(num) == 6 || parseInt(num) == 7 || parseInt(num) == 8) {
                     oArray[2].push(parseInt(num));
-                    oArray[2].sort();
+
                 } if (parseInt(num) == 0 || parseInt(num) == 3 || parseInt(num) == 6) {
                     oArray[3].push(parseInt(num));
-                    oArray[3].sort();
+
                 } if (parseInt(num) == 1 || parseInt(num) == 4 || parseInt(num) == 7) {
                     oArray[4].push(parseInt(num));
-                    oArray[4].sort();
+
                 } if (parseInt(num) == 2 || parseInt(num) == 5 || parseInt(num) == 8) {
                     oArray[5].push(parseInt(num));
-                    oArray[5].sort();
+
                 } if (parseInt(num) == 0 || parseInt(num) == 4 || parseInt(num) == 8) {
                     oArray[6].push(parseInt(num));
-                    oArray[6].sort();
+
                 } if (parseInt(num) == 2 || parseInt(num) == 4 || parseInt(num) == 6) {
                     oArray[7].push(parseInt(num));
-                    oArray[7].sort();
+
                 }
 
                 x = true; //allows X to be the next player
@@ -128,12 +131,9 @@ window.onload = function() {
             element.classList.remove("O");
             xArray = [[],[],[],[],[],[],[],[]];
             oArray = [[],[],[],[],[],[],[],[]];
-            id = 0;
             x = true;
             status.textContent = "Move your mouse over a square and click to play an X or an O.";
             status.classList.remove("you-won");
-
         })
     })
-
 }
